@@ -1,0 +1,17 @@
+
+
+Warehouse: Raw Materials Warehouse
+Formatted String: 20240904132817643rmw
+Reference Number: DJ0B73I1
+Palette Number: M3JGEU9L
+
+Warehouse: Raw Materials Warehouse
+Formatted String: 20240904134608904rmw
+Reference Number: AN0M9RQB
+Palette Number: 4N9H2LTU
+
+Warehouse: Raw Materials Warehouse
+Formatted String: 20240904134834679rmw
+Reference Number: 8XYD7BJ7
+Palette Number: E5NVWPIN
+
