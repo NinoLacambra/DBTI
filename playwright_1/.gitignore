@@ -12,4 +12,6 @@ wms_tests/data/
 /package-lock.json/
 /allure-results/
 /package.json/
-/output.txt/
+output.txt/
+.github/
+.gitignore
