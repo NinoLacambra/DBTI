@@ -4,4 +4,12 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 jsonReports/
-wms_tests/data
+wms_tests/data/
+output.txt
+package-lock.json
+package.json
+test-results/
+package-lock.json
+allure-results/
+package.json
+output.txt
