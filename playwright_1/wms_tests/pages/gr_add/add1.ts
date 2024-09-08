@@ -38,9 +38,6 @@ export async function add1(page: Page, warehouseName: string) {
         return result;
     }
 
-    // Fill batch details
-    await page.locator(data.goodreceipt.create.batches).click();
-
     // Format and fill reference number based on warehouse name and date
     const formattedString = formatDateWithName(warehouseName);
     await page.locator(data.goodreceipt.inBatch.refNum).fill(formattedString);
@@ -52,29 +49,46 @@ export async function add1(page: Page, warehouseName: string) {
     const daySelector = `//span[@aria-label='August ${randomDay}, 2024']`;
     await page.locator(daySelector).click();
 
-    // Fill reference number and palette number
-    const reference = generateRandomString();
-    const paletteNum = generateRandomString();
-    await page.locator(data.goodreceipt.inBatch.reference).fill(reference);
-    await page.locator(data.goodreceipt.inBatch.palletNum).fill(paletteNum);
+  
 
-    // Fill quantity
-    await page.locator(data.goodreceipt.inBatch.quantity).fill("100");
-    await page.locator(data.goodreceipt.inBatch.addBatch).click();
-    await page.locator(data.goodreceipt.inBatch.checkBatch).click();
+    // Check if the batch creation element is clickable
+    const isBatchClickable = await page.locator(data.goodreceipt.create.batches).isEnabled();
 
-    // Handle submission or return based on form validity
-    const submit = await page.isEnabled(data.goodreceipt.inBatch.submitBatch);
-    if (submit) {
-        await page.locator(data.goodreceipt.inBatch.submitBatch).click();
+    if (isBatchClickable) {
+
+          // Click to open batch creation
+        await page.locator(data.goodreceipt.create.batches).click();
+        // Fill reference number and palette number
+        const reference = generateRandomString();
+        const paletteNum = generateRandomString();
+        await page.locator(data.goodreceipt.inBatch.reference).fill(reference);
+        await page.locator(data.goodreceipt.inBatch.palletNum).fill(paletteNum);
+
+        // Fill quantity and handle batch actions
+        await page.locator(data.goodreceipt.inBatch.quantity).fill("100");
+        await page.locator(data.goodreceipt.inBatch.addBatch).click();
+        await page.locator(data.goodreceipt.inBatch.checkBatch).click();
+
+        const submit = await page.isEnabled(data.goodreceipt.inBatch.submitBatch);
+        if (submit) {
+            await page.locator(data.goodreceipt.inBatch.submitBatch).click();
+        } else {
+            await page.locator(data.goodreceipt.inBatch.returnBatch).click();
+        }
+
+        // Confirm the batch submission
+        await page.locator(data.goodreceipt.inBatch.confirmBatch).click();
+
+        // Store the generated values in a text file
+        const dataToStore = `Warehouse: ${warehouseName}\nFormatted String: ${formattedString}\nReference Number: ${reference}\nPalette Number: ${paletteNum}\n\n`;
+        await fs.appendFile('output.txt', dataToStore);
+
     } else {
-        await page.locator(data.goodreceipt.inBatch.returnBatch).click();
+        // If batch creation is not clickable, fill a single quantity and handle actions
+        await page.locator(data.goodreceipt.create.singleQuantity).fill("10");
+        await page.locator(data.goodreceipt.create.singleQuantity).press('Enter');
+        await page.locator(data.goodreceipt.inBatch.submitBatch).click();
+        // Confirm the batch submission
+        await page.locator(data.goodreceipt.inBatch.confirmBatch).click();
     }
-
-    // Confirm the batch submission
-    await page.locator(data.goodreceipt.inBatch.confirmBatch).click();
-
-    // Store the generated values in a text file
-    const dataToStore = `Warehouse: ${warehouseName}\nFormatted String: ${formattedString}\nReference Number: ${reference}\nPalette Number: ${paletteNum}\n\n`;
-    await fs.appendFile('output.txt', dataToStore);
 }

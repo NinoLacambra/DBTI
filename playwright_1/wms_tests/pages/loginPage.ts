@@ -26,13 +26,13 @@ export default class newLogin {
 
   async login() {
     // Navigate to baseURL
-    await this.page.goto('/'); // Will navigate to baseURL + '/'
+    await this.page.goto('https://192.168.2.32:8094/'); // Will navigate to baseURL + '/'
     
-    await expect(this.page).toHaveTitle(/Login/);
+    await expect.soft(this.page).toHaveTitle(/Login/);
     await this.enterEmail(data.user.email);
     await this.enterPassword(data.user.password);
     await this.clickBtn();
-    
-    //await this.page.context().storageState({path: "../data/loginAuth.json"});
+    await this.page.waitForURL('https://192.168.2.32:8094/');
+    await expect(this.page).toHaveTitle(/Dashboard/);
   }
 }

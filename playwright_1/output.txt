@@ -15,3 +15,38 @@ Formatted String: 20240904134834679rmw
 Reference Number: 8XYD7BJ7
 Palette Number: E5NVWPIN
 
+Warehouse: Raw Materials Warehouse
+Formatted String: 20240909011110675rmw
+Reference Number: 2R7IXETO
+Palette Number: BB3Z40GD
+
+Warehouse: Raw Materials Warehouse
+Formatted String: 20240909011558703rmw
+Reference Number: DCI39GHW
+Palette Number: CPI0MCFW
+
+Warehouse: Raw Materials Warehouse
+Formatted String: 20240909012337659rmw
+Reference Number: TN8DY7D0
+Palette Number: D60O4LEP
+
+Warehouse: Raw Materials Warehouse
+Formatted String: 20240909012451224rmw
+Reference Number: KZDDP7LM
+Palette Number: 6R6O3LC3
+
+Warehouse: Raw Materials Warehouse
+Formatted String: 20240909014111648rmw
+Reference Number: JKE4SFQZ
+Palette Number: UFJVNYFN
+
+Warehouse: Raw Materials Warehouse
+Formatted String: 20240909014208917rmw
+Reference Number: G7DOADB9
+Palette Number: XDJMTLA5
+
+Warehouse: Raw Materials Warehouse
+Formatted String: 20240909024355899rmw
+Reference Number: Y0YG0RP9
+Palette Number: 0CQ1UJSQ
+

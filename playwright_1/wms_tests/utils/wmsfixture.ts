@@ -3,6 +3,7 @@ import Login from "../pages/loginPage";
 import GoodReceiptNavigation from "../pages/goodReceiptNavigation";
 import GoodReceiptAdd from "../pages/goodReceiptAdd";
 
+
 type pages = {
     logIn: Login;
     goodRec: GoodReceiptNavigation;

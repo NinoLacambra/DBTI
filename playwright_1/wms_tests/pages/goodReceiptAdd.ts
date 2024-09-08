@@ -46,6 +46,7 @@ export default class GoodReceiptAdd {
 
     async goodReceiptFinal() {
         await this.add();
+        await expect(this.page).toHaveTitle(/Create/);
         await this.addItem();
         await this.randomPick1();       
         await this.randomPick2();

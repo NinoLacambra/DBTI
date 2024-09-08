@@ -20,5 +20,6 @@ export default class GoodReceiptNavigation{
     async goodReceipt(){
         await this.goodReceiptNav();
         await this.goodReceiptClk();
+        await expect(this.page).toHaveTitle(/Goods Receipt/);
     }
 }
